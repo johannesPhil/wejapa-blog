@@ -1,18 +1,75 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>Posts</h2>
+    <div class="posts">
+      <router-link
+        :to="{ name: 'Post', params: { id: post.id } }"
+        v-for="post in posts"
+        :key="post.id"
+        class="link"
+      >
+        <div class="post">
+          {{ post.title }}
+        </div>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
-  }
+  components: {},
+
+  data() {
+    return {
+      posts: [],
+    }
+  },
+
+  created() {
+    fetch('https://jsonplaceholder.typicode.com/todos/')
+      .then((response) => response.json())
+
+      .then((data) => {
+        this.posts = data
+        console.log(data)
+      })
+  },
 }
 </script>
+
+<style scoped>
+.posts {
+  width: 100%;
+  height: auto;
+  padding: 2% 5%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.link {
+  color: #2c3e50;
+  text-decoration: none;
+  transition: ease-in-out 200ms;
+}
+
+.link:hover {
+  /* background: #19bf69; */
+  color: #19bf69;
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px 2px #bebebe3d;
+  transform: scale(1.1);
+}
+
+.post {
+  width: 300px;
+  min-height: 30px;
+  padding: 1rem;
+  text-align: left;
+  text-transform: capitalize;
+}
+</style>
