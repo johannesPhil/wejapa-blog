@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <h2>Posts</h2>
-    <div class="posts">
-      <router-link
-        :to="{ name: 'Post', params: { id: post.id } }"
-        v-for="post in posts"
-        :key="post.id"
-        class="link"
-      >
-        <div class="post">
-          {{ post.title }}
-        </div>
-      </router-link>
+    <div class="posts-container">
+      <h2>Posts</h2>
+      <div class="posts">
+        <router-link
+          :to="{ name: 'Post', params: { id: post.id } }"
+          v-for="post in posts"
+          :key="post.id"
+          class="link"
+        >
+          <div class="post">
+            {{ post.title }}
+          </div>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -42,10 +44,28 @@ export default {
 </script>
 
 <style scoped>
+.posts-container {
+  padding: 2% 5%;
+}
+
+h2 {
+  text-align: left;
+  position: relative;
+}
+
+h2::after {
+  display: block;
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 50%;
+  border-bottom: solid 2px #19bf69;
+}
+
 .posts {
   width: 100%;
   height: auto;
-  padding: 2% 5%;
+
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
