@@ -48,19 +48,22 @@ export default {
   padding: 2% 5%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .link {
   color: #2c3e50;
   text-decoration: none;
+  border-left: solid 2px #19bf69;
+  /* background: #19bf6913; */
+  margin: 2% 0;
   transition: ease-in-out 200ms;
 }
 
 .link:hover {
   /* background: #19bf69; */
   color: #19bf69;
-  border-radius: 12px;
+  border-radius: 5px;
   box-shadow: 1px 1px 5px 2px #bebebe3d;
   transform: scale(1.1);
 }
@@ -69,6 +72,7 @@ export default {
   width: 300px;
   min-height: 30px;
   padding: 1rem;
+  margin: 1rem;
   text-align: left;
   text-transform: capitalize;
 }
