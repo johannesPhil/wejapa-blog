@@ -57,8 +57,8 @@
         <p class="comment__body">
           {{ comment.body }}
         </p>
-        <p class="comment__user">
-          {{ comment.name }}
+        <p class="comment__email">
+          {{ comment.email }}
         </p>
       </div>
     </div>
@@ -283,7 +283,7 @@ button.form__el:hover {
   text-align: left;
 }
 
-.comment__user {
+.comment__email {
   text-align: right;
   font-style: italic;
   font-weight: bolder;
